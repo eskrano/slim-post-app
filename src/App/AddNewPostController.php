@@ -66,22 +66,15 @@ class AddNewPostController
 
         $post_count++;
 
-
         $file = fopen($this->posts_dir .'/data/'. $post_count,'w+');
 
-        fwrite($file,json_encode($body,JSON_PRETTY_PRINT));
+        fwrite($file, json_encode($body, JSON_PRETTY_PRINT));
 
         fclose($file);
 
-        unlink($this->posts_dir . '/counter');
-
-        $counter_file = fopen($this->posts_dir . '/counter','w+');
-
-        fwrite($counter_file,$post_count);
-
-        fclose($counter_file);
-
-        return true;
+        file_put_contents($this->posts_dir . '/counter', $post_count);
+        
+        return  true;
 
     }
 
