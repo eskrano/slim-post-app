@@ -73,6 +73,8 @@ class AddNewPostController
         fclose($file);
 
         file_put_contents($this->posts_dir . '/counter', $post_count);
+        
+        return  true;
 
     }
 
